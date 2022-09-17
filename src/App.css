@@ -1,38 +1,1097 @@
-.App {
+ 
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;  
+}
+ 
+body{ 
+  overflow-x: hidden; 
+  background-color: #fff;
+}
+body::-webkit-scrollbar { display: none; }
+nav{
+  background-color: rgb(252, 187, 47);
+  height: 60px;
+  /* background-color: peru; */
+  width: 100%;  
+  position: fixed;  
+  z-index: 1;
+}
+ 
+ 
+.shadowX{ 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.8); 
+} 
+label.logo{  
+  color: black;
+  padding: 0 100px; 
+}
+nav ul{ 
+  float: inline-end;
+  margin-right: 40px;  
+}
+nav ul li{
+  display: inline-block;
+  line-height: 60px;
+  margin: 0 30px;   
+  font-family: serif;
+  font-weight: bold;
+}
+nav ul li a{ 
+  text-decoration: none;
+  color: black; 
+}
+.backarrow{
+  float: left;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+}
+ 
+nav ul li a:hover{  
+  color: blue; 
+}
+ 
+.smallscreennav{
   text-align: center;
+  line-height:60px;
+  display: none;
+  cursor: pointer;
+  float: right;       
+  padding-top: 7px; 
+  margin-right: 20px;
+}
+.smallscreennav div{  
+  height: 3px;
+  margin: 5px;
+  width: 25px;  
+  background-color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width:768px){
+  label.logo{
+    font-size: 25px; 
+    margin-left: 0px;
+  }
+  nav ul li a{
+    font-size: 16px;
+    color: white;
+  }
+  .smallscreennav{
+    display: block;
   }
 }
+@media (max-width:900px){
+  label.logo{
+    font-size: 25px; 
+    margin-left: -75px;
+  } 
+}
+@media (max-width:700px){
+  label.logo{
+    font-size: 25px; 
+    margin-left: -60px;
+  } 
+}
+@media (max-width:768px){
+  .checkbtn{
+    display: block;
+  }
+  nav ul{
+    position: fixed;
+    right: -42px;
+    width: 50%;
+    margin-top: 8px; 
+    height: 520px;
+    background-color: #fff;
+    transform: translateX(100%);  
+    text-align: center; 
+    transition: all .5s;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px; 
+  }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  nav ul li a{
+    font-size: 20px;
+    color: black;
+  }
+
+  a:hover{
+    background:none;
+    color: #0082e6;
+  }
+
+  #check:checked ~ ul{
+    left: 0;
+  }
+}
+.nav-active{
+  transform: translateX(0%); 
+}
+
+/* signup css*/
+
+.container1{  
+  margin-top: 2rem;
+  margin-bottom: 2rem; 
+  height: 100vh;
+  align-items: center;
+  text-align: center;
+  justify-content: center;   
+  
+ 
+
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  
+  /* box-shadow: 0px 2px 5px #aaaaaa;  */
+ 
+  /* box-shadow: 2px 2px 5px rgba(0,0,0,0.4); */
+  /* border-radius: 8px; */
+}
+
+.section__height{
+  background-color:  #fff;  
+}
+
+.contact__container{
+  max-width: 800px;
+  min-width: 800px; 
+  background-color: #fff;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  float: inline; 
+  margin-left: auto;
+  height: 530px;
+  margin-right: auto; 
+  overflow-y: hidden;
+}
+.contact__container h2{
+  font:bold;
+  font-size: 35px;
+  color: #000;
+}
+ 
+.cpasswordInput{
+  width: 500px;
+  text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 60px;
+}
+.cpasswordbox Input{
+  width: 230px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 35px;
+}
+.passwordInput{
+  width: 500px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 123px;
+}
+.emailInput{
+  width: 500px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 153px;
+}
+.nameInput{
+  width: 500px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 151px;
 }
 
-.App-link {
-  color: #61dafb;
+.contact__container input:hover{
+  box-shadow: 1px 1px 3px #e2dfdf; 
+
+}
+ 
+.singnupbox{
+  display: flex; 
+}
+ 
+.singnupbox label{
+  color: #000; 
+}
+ 
+.contactbox{
+  display: flex;
+  flex-direction: column;
+}
+.contactbox{
+  margin-top: 10px;
+  padding: 4px;
+}
+.singnupbuttonsbox{
+  margin-top: 50px;
+  margin-bottom: 40px;
+  display: flex;  
+}
+.contactbuttonbox{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.singnupbuttonsbox button{
+  max-width: 150px;
+  min-width: 150px; 
+}
+.contactbuttonbox button{
+  max-width: 225px;
+  min-width: 225px;
+}
+.getstartedbtn{
+  height: 40px; 
+  width: 120px;
+  background-color: rgb(32, 32, 32);  
+  border: 1px solid rgb(32, 32, 32);
+  border-radius: 30px;
+  color: #fff;
+    
+  transition: 250ms;
+}
+.getstartedbtn:hover{
+  background-color: #000;
+  border: 1px solid #000;
+   
+}
+.getstartedbtn a{
+  text-decoration: none;
+  color: #fff;
+}
+.getstartedbtn a:hover{ 
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+
+/*Home css*/
+.home{
+  height: 100vh;
+  width: 100%;
+  /* background-color: rgb(252, 187, 47); */
+  background-color: rgb(32, 32, 32);
+}
+.homediv1{
+  width: 100%;
+  /* border: 1px solid rgb(252, 187, 47); */
+  border: 1px solid  rgb(19, 18, 18);
+  height: 100%; 
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.homediv1 h2{
+  font-size: 80px;
+  margin-top: 250px;
+  color: #fff;
+}
+.homediv1 h3{
+  font-size: 30px;
+  margin-top: 50px;
+  color: 
+  #fff;
+}
+.startreadingbtn{
+  margin-top: 40px;
+  width: 200px;
+  height: 60px; 
+  background-color: rgb(248, 195, 82);  
+  border: 1px solid rgb(248, 195, 82);
+  border-radius: 30px;
+  font-size: 20px;
+}
+.startreadingbtn a{
+  text-decoration: none;
+  color: #000;
+}
+.startreadingbtn a:hover{ 
+  color: black;
+  
+}
+.startreadingbtn:hover{
+  background-color:rgb(252, 187, 47);
+  border: 1px solid rgb(252, 187, 47);
+  transition: 250ms;
+}
+
+@media (max-width:768px){
+  .homediv1{
+    width: 100%;
   }
-  to {
-    transform: rotate(360deg);
+  .homediv2{ 
+    width: 0%;
   }
+  .homediv1 h2{
+    margin-top: 150px;
+    font-size: 50px;
+  }
+}
+
+/*login page css*/
+
+.loginOuterContainer{
+  margin: 0px 0px 0px 0px;
+  height: 100vh;
+  width: 100%;  
+  background-color:  #fff;  
+  overflow-y: hidden;
+}
+
+.loginContainer{
+  max-width: 1000px;
+  min-width: 1000px; 
+  height: 550px; 
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;  
+  margin-top: 50px; 
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #fff; 
+  color: #000;   
+}
+.loginanimationdiv{
+width: 60%; 
+height: 100%;
+background-image: url("../src/Images/login_animation.gif");
+}
+
+.logininputdiv{
+width: 40%; 
+height: 100%; 
+}
+.logincreateaccountp{
+  color: blue;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.logincreateaccountp a{
+  text-decoration: none;
+}
+.forgot_pass a{
+  text-decoration: none;
+}
+.forgot_pass{
+  margin-bottom: -20px;
+}
+.loginbox{
+  margin-top: 0px;
+}
+.loginbox label{
+  margin-top: 10px;
+  margin-bottom: 10px; 
+}
+.loginbox button{
+  margin-top: 50px;
+}
+
+@media (max-width:768px){
+  .loginanimationdiv{
+    display: none;
+    }
+    .logininputdiv{
+      width: 100%; 
+      height: 100%;
+      background: transparent;
+      }
+    .loginContainer{
+      max-width: auto;
+      min-width: auto; 
+      height: auto;
+      border: none;
+      background: transparent;
+    }
+}
+
+.googleIconBox{
+  height: 40px;
+  width: 40px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.googleIconBox img{
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+.email_input_box{
+  margin-left: 59px;
+}
+.password_input_box{
+  margin-left: 30px;
+}
+
+/* addpassword page css*/
+
+.addpasswordcontainer{
+  max-width: 1000px;
+  min-width: 1000px; 
+  height: 600px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  display: flex;
+  background-color: transparent;
+  overflow-y: hidden;
+}
+.addpasswordcontainerinputdiv{
+  width: 500px;
+  height: 400px;
+}
+.passwordbox label{
+  margin-left: 0px;
+}
+ 
+.passwordbox input{
+  margin-left: 6rem;
+}
+ 
+.passwordbox{
+  margin-top: 2rem;
+}
+
+@media (max-width:768px){
+  .loginanimationdiv{
+    display: none;
+  }
+  
+}
+
+
+/* profile css*/
+.profile{
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  position: fixed; 
+}
+
+.profilecontainer{
+  display: flex; 
+}
+
+@media (max-width: 1000px){
+  .profilecontainer{
+    display: flex;
+    flex-direction: column; 
+  }
+}
+.profilecontainer1{
+  width: 20%;
+  height: 100vh;
+  margin-top: 3rem; 
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;   
+}
+
+.followBtn{  
+  color: #000;
+  width: 100px;
+  height: 35px;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid black;
+  margin-right: 20px;
+}
+.unfollowBtn{
+  color: #000;
+  width: 100px;
+  height: 35px;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid black;
+  margin-right: 20px;
+}
+
+@media (max-width:1000px){
+  .profilecontainer1{
+    height: 500px;
+    margin-top: 1rem;
+  }
+}
+.profilecontainer1 .search_input{ 
+  width: 250px;
+  height: 30px;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+
+}
+.icon_input_box{
+  margin-top: 4rem;
+  width: 300px;
+  height: 35px; 
+  border: 1px solid black;
+  outline: none;
+  margin-left: auto;
+  margin-right: auto; 
+  display: flex;
+
+}
+.icon_input_box .btn{
+  border-radius: 0px;
+  margin-left: 10px; 
+  background-color: rgb(32, 32, 32);  
+  border: 1px solid rgb(32, 32, 32);
+}
+
+.icon_input_box .btn:hover{
+  background-color: #000;
+  border: 1px solid #000;
+}
+
+@media (max-width:1000px){
+  .profilecontainer1{
+    width: 100%; 
+  }
+  .icon_input_box{
+    display: flex;
+    max-width: 400px;
+    min-width: 400px;   
+  }
+
+  .icon_input_box .search_input{
+    width: 370px; 
+    margin-top: 2px;
+  }
+  
+  .bssearch_icon{ 
+    display: none;
+  }
+
+  .icon_input_box .btn{ 
+    margin-right: -130px; 
+    margin-left: 30px;  
+    width: 100px;
+    border-radius: 8px;
+  }
+ 
+  
+}
+@media (max-width:600px){
+  .icon_input_box{ 
+    max-width: 300px;
+    min-width: 200px;
+    height: 32px;  
+    margin-left: auto;
+    border-radius: 9px; 
+    margin-top: 80px;
+    margin-bottom: 50px;
+
+  }
+  .profilecontainer1 .search_input{ 
+    width: 230px;
+    height: 25px; 
+    outline: none;
+    border: none;
+    margin-left: 15px;
+    margin-top: 2px;  
+  }
+  .profilecontainer1 .btn{
+    margin-left: 40px;  
+    margin-right: 10px; 
+    margin-left: 90px;  
+    border-radius: 2px 2px 2px 2px;
+    width: auto;
+  }
+}
+@media (max-width:400px){
+  .icon_input_box{ 
+    max-width: 230px;
+    min-width: 200px;
+    height: 32px;  
+    margin-left: 35px;
+    border-radius: 9px; 
+    margin-top: 80px;
+    margin-bottom: 50px;
+
+  }
+  .profilecontainer1 .search_input{ 
+    width: 230px;
+    height: 35px; 
+    outline: none;
+    border: none;
+    margin-left: 15px;
+    margin-top: 2px;  
+  }
+  .profilecontainer1 .btn{
+    margin-left: 30px; 
+    border: 1px solid blue;
+    margin-right: 10px; 
+    margin-left: 30px;  
+    width: auto;
+  }
+}
+
+.more__button{
+  text-decoration: none; 
+  color: rgb(192, 190, 190);
+}
+.more__button:hover{
+  color: rgb(83, 79, 79);
+  
+}
+ 
+.bssearch_icon{
+  margin-left: 10px; 
+  margin-top: 10px; 
+}
+.blog_categories{
+  margin-top: 50px; 
+  padding: 10px;
+}
+.blog_categories button{
+  text-align: center;  
+  width: 170px; 
+  border: 1px solid grey;
+  height: 35px; 
+  margin: 10px;
+  background-color: #fff;
+  color: grey;
+}
+@media (max-width:768px){
+  .blog_categories{ 
+    margin-top: 20px;
+  }
+}
+.blog_categories button:hover{
+  
+  border: 1px solid #000; 
+  cursor: pointer; 
+  color: #000;
+}
+
+@media (max-width:400px){
+  .blog_categories button{
+    text-align: center;  
+    width: 170px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    height: 30px;
+    cursor: pointer;
+    margin-left: 50px;
+    float: inline-start;
+  
+  }
+
+}
+
+.profilecontainer2{
+  height: 100vh; 
+  margin-top:60px; 
+  background-color: #fff;
+  width: 75%; 
+  border: 1px solid grey; 
+  overflow-y: auto;
+  align-items: center;  
+  justify-content: center; 
+  padding-bottom: 3rem;
+}
+
+@media (max-width:1000px){
+  .profilecontainer2{
+    height: 200px;
+    width: 100%;
+    overflow-y: auto;
+    margin-bottom: 50px; 
+    margin-top: 0px; 
+    border: none; 
+  
+  }
+
+   
+}
+ 
+
+.profilecontainer2 .card{
+ margin-top: 20px;  
+ margin-left: auto;
+ margin-right: auto;
+ min-width: 700px;
+ max-width: 700px;
+ border: none; 
+ 
+}
+
+.profilecontainer2 .card img{ 
+max-width: 150px;
+min-height:150px;
+min-height: 150px;
+max-height: 150px;
+ 
+}
+
+.profilecontainer2 .card:hover{
+  cursor: pointer;
+}
+
+@media (max-width:1000px){
+  .profilecontainer2 img{
+    min-width: 100px;
+    max-width: 100px; 
+
+  }
+  .profilecontainer2 .card{
+    margin-top: 20px; 
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 400px;
+    max-width: 400px;
+    border: none;
+    height:150px;
+    margin-bottom: 20px; 
+   }
+}
+.hr{
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.profilecontainer3{
+  height: 100vh;
+  margin-top: 3rem;
+  background-color: #fff;
+  width: 5%; 
+}
+@media (max-width:1000px){
+  .profilecontainer3{ 
+    height: 70px;
+    width: 100%; 
+    margin-top: -25px;
+    margin-bottom: 0px; 
+  }
+}
+.profile_icons{
+  margin-top: 50px;  
+  width: 100%;
+  height: auto;
+}
+@media (max-width:1000px){
+  .profile_icons{
+    display: flex;
+    width: 100%;
+    height: 100px; 
+    margin-top: 0px; 
+  }
+}
+.profile_page_icon{
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  margin: 30px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@media (max-width:1000px){
+  .profile_page_icon{
+    width: 25px;
+  height: 25px;
+  padding: 2px;  
+  margin-left: auto;
+  margin-right: auto; 
+
+  }
+}
+
+.bookmark_empty_icon{
+  float: inline-end; 
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.bookmark_filled_icon{
+  float: inline-end; 
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+.profilelogopic{
+  margin-left: 30px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin-right: 0px; 
+}
+
+.profileimage{
+  width: 100%;
+  height: 100%; 
+  border-radius: 50%;
+}
+
+.userprofile{
+  height: 100vh;
+  width: 100%; 
+  border: 1px solid transparent;
+  margin-top: 0px;
+}
+
+.editprofile_h3{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 300;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem; 
+}
+
+.editprofile{
+  height: auto;
+  width: 1000px;
+  border: 1px solid grey; 
+  margin-top: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+.editprofile_inner_div{
+  height: 400px; 
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  display: flex;
+}
+.image_div{
+  height: 100px;
+  width: 100px;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-top: -70px;
+  margin-left: 50px;
+
+}
+.image_icon{
+  height: 100%;
+  width: 100%;
+}
+.image_info_div{
+  margin-left: 10px;
+  margin-top: 2rem;
+}
+.image_info_div input{
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin-top: 2rem;
+  margin-left: 20px;
+  width: 250px;
+}
+
+.edit_info_outer_div{ 
+  text-align: center;  
+}
+.edit_profile_input_label_div{
+  margin-top: 2rem;
+  margin-left: 4rem;
+  display: flex;
+}
+
+.edit_profile_input_label_div lable{
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.edit_profile_input_label_div input{ 
+  margin-left: 20px; 
+  width: 350px;
+}
+.save_btn_box button{
+  width: 200px; 
+  float: inline-end;
+  margin-top: 2rem;
+}
+.user_profile_forgot_pass_div{
+  margin-top: 2rem; 
+  color: rgb(70, 70, 255);
+  cursor: pointer;
+  
+}
+
+.user_profile_forgot_pass_div:hover{
+  color: blue;
+}
+
+.card{
+  width: 900px;
+  max-height: auto;
+  min-height: 150px;
+  margin: 6px;
+  margin-left: auto;
+  margin-right: auto; 
+  border: 1px solid red;
+  margin-bottom: 2rem; 
+}
+
+.blog_title_userprofile{
+  color: green;
+}
+
+.edit_delete_btn{
+  float: right;
+}
+
+.edit_delete_btn .btn{
+  margin-left: 8px;
+}
+
+/*************add blog modified component css**********************/
+.addblog__container{
+  height: 100%;
+  width: 100%;     
+}
+.blog__title__div{
+  height: 80px;
+  max-width: 1000px;  
+  margin-left: auto;
+  margin-right: auto;  
+}
+.blog__title__div input{
+  height: 80px;
+  width: 100%;
+  font-size: 45px;
+  outline: none;
+  border: none;  
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+.blog__description__div{
+  height: 100%;
+  max-width: 1000px;  
+  margin-left: auto;
+  margin-right: auto;
+}
+.blog__description__div textarea{
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  outline: none;
+  border: none; 
+  width: 100%;
+  min-height: 300px;
+  max-height: auto;
+
+}
+.addblog__outer__container{
+  height: 100vh;
+  width: 900px;  
+  margin-top: 8rem; 
+}
+
+.publishBtn{
+  margin-bottom: 1rem; 
+  float: right;
+}
+.blog_image_div{
+  display: flex; 
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  margin-top: 20px;
+}
+.blog_image_div label{
+  width: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 2px;
+}
+.blog_type_div{
+  display: flex;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.blog_type_div label{
+  margin: 2px;
+  width: 165px;
+}
+
+/* Detail description of blog*/
+.detail__description__outer__div{
+  height: 100vh;
+  width: 100%;
+}
+
+.detail__description__inner__div{
+  height: 100vh;
+  width: 900px; 
+  margin-left: 22%;
+  margin-right: 50%;
+  text-align: center;
+  align-items: center; 
+  margin-top: 1rem;
+  padding: 4px; 
+
+}
+.detail__description__image__div h3{
+  margin-top: 1rem;
+  margin-bottom: 2rem; 
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+.detail__description__inner__div p{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.detail__description__image__div{
+  height: 500px;
+  width: 500px;
+  margin-left: 22%;
+  margin-right: 50%;  
+}
+
+.detail__description__image__div img{
+  height: 400px;
+  width: 400px;
+}
+.detail__description__outer__div .btn{
+  position: fixed;
+  border-radius: 0px 50px 50px 0px;
 }
