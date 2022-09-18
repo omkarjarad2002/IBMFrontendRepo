@@ -5,6 +5,8 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { CgProfile } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
+
+import { SiBloglovin } from "react-icons/si";
 function Navbar() {
   const { User } = useSelector((state) => state.user);
 
@@ -52,7 +54,7 @@ function Navbar() {
       return (
         <>
           <li>
-            <Link to={`/profile/${User?.user._id}`}>Home</Link>
+            <Link to={`/profile`}>Home</Link>
           </li>
           <li>
             <Link to={`/addblog/${User?.user._id}`}>Write</Link>
@@ -78,7 +80,7 @@ function Navbar() {
     <div>
       <nav className="shadowX">
         <label className="logo fs-1" style={{ fontFamily: "serif" }}>
-          Blog
+          Blog'S
         </label>
         <div className="smallscreennav">
           <div className="line1"></div>

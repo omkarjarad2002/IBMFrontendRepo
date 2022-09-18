@@ -44,7 +44,7 @@ function DetailDescription() {
           />
         </div>
         <div className="detail__title__description__div">
-          <p>{blog.description}</p>
+          <p>{".........................." + blog.description}</p>
         </div>
       </div>
     </div>

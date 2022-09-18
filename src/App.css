@@ -14,8 +14,7 @@ body{
 body::-webkit-scrollbar { display: none; }
 nav{
   background-color: rgb(252, 187, 47);
-  height: 60px;
-  /* background-color: peru; */
+  height: 60px; 
   width: 100%;  
   position: fixed;  
   z-index: 1;
@@ -145,15 +144,7 @@ nav ul li a:hover{
   align-items: center;
   text-align: center;
   justify-content: center;   
-  
- 
-
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-  
-  /* box-shadow: 0px 2px 5px #aaaaaa;  */
- 
-  /* box-shadow: 2px 2px 5px rgba(0,0,0,0.4); */
-  /* border-radius: 8px; */
+   
 }
 
 .section__height{
@@ -292,8 +283,7 @@ nav ul li a:hover{
 /*Home css*/
 .home{
   height: 100vh;
-  width: 100%;
-  /* background-color: rgb(252, 187, 47); */
+  width: 100%; 
   background-color: rgb(32, 32, 32);
 }
 .homediv1{
@@ -659,6 +649,7 @@ height: 100%;
 .more__button{
   text-decoration: none; 
   color: rgb(192, 190, 190);
+  transition: 200ms;
 }
 .more__button:hover{
   color: rgb(83, 79, 79);
@@ -750,12 +741,14 @@ height: 100%;
 max-width: 150px;
 min-height:150px;
 min-height: 150px;
-max-height: 150px;
- 
+max-height: 150px; 
 }
 
 .profilecontainer2 .card:hover{
   cursor: pointer;
+}
+.image_info_div img{
+  border-radius: 50%; 
 }
 
 @media (max-width:1000px){
@@ -1058,13 +1051,13 @@ max-height: 150px;
   height: 100vh;
   width: 900px; 
   margin-left: 22%;
-  margin-right: 50%;
-  text-align: center;
-  align-items: center; 
+  margin-right: 50%; 
   margin-top: 1rem;
   padding: 4px; 
-
+  text-align: center;
+  align-items: center;
 }
+ 
 .detail__description__image__div h3{
   margin-top: 1rem;
   margin-bottom: 2rem; 
@@ -1076,7 +1069,7 @@ max-height: 150px;
   font-family: Arial, Helvetica, sans-serif;
   color: #000;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem;  
 }
 
 

@@ -47,7 +47,7 @@ function SendOtp() {
                   className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   name="eamil"
-                  value={User?.user.email}
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -66,7 +66,7 @@ function SendOtp() {
                     style={{ textDecoration: "none", color: "white" }}
                     className="py-3"
                   >
-                    Send Otp
+                    Send Email
                   </Link>
                 </button>
               </div>

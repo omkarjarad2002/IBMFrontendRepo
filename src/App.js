@@ -20,6 +20,7 @@ import SendOtp from "./components/SendOtp";
 import AddBlog from "./components/AddBlog";
 import EnterOtp from "./components/EnterOtp";
 import DetailDescription from "./components/DetailDescription";
+import BookMarkedBlogs from "./components/BookMarkedBlogs";
 
 export const UserContext = createContext();
 
@@ -149,6 +150,15 @@ function App() {
             element={
               <>
                 <DetailDescription />
+              </>
+            }
+          />
+          <Route
+            path="/bookmarkedblogs/:id"
+            element={
+              <>
+                <Navbar />
+                <BookMarkedBlogs />
               </>
             }
           />

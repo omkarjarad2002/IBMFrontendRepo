@@ -6,13 +6,12 @@ import { useSelector } from "react-redux";
 function UserProfile() {
   const { id } = useParams();
   const [blogs, setBlog] = useState([]);
+  const size = blogs.length;
 
   const { User } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
-  const forgotPassClick = (e) => {
-    navigate(`/sendotp`);
-  };
+
   const [file, setFile] = useState();
 
   const changeImage = (e) => {
@@ -85,13 +84,11 @@ function UserProfile() {
     }
   };
 
-  let userId = "";
-
-  const handleClick = async (userId) => {
-    console.log(userId);
+  const handleClick = async (id) => {
+    console.log(id);
     try {
-      const res = await axios.delete(`http://localhost:/4000/deleteblog`, {
-        userId,
+      const res = await axios.delete(`http://localhost:4000/deleteblog/${id}`, {
+        withCredentials: true,
       });
       console.log(res);
     } catch (error) {
@@ -125,19 +122,9 @@ function UserProfile() {
                 <label htmlFor="email">Email : </label>
                 <input value={User?.user.email}></input>
               </div>
-              <div className="followers_div">
-                <label htmlFor="followers">Followers : </label>
-                <input value="200"></input>
-              </div>
-              <div className="following_div">
-                <label htmlFor="following">Following : </label>
-                <input value="500"></input>
-              </div>
-              <div
-                className="user_profile_forgot_pass_div"
-                onClick={forgotPassClick}
-              >
-                <p>Forgot Paasword ?</p>
+              <div className="user_profile_forgot_pass_div">
+                <label htmlFor="text">Blog's : </label>
+                <input value={size}></input>
               </div>
             </div>
           </div>

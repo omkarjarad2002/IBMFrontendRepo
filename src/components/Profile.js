@@ -10,14 +10,15 @@ import { BsBookmarksFill } from "react-icons/bs";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { data } from "autoprefixer";
 
 function Profile() {
   const { User } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
+  const [blogId, setBlogId] = useState("");
   const [blogs, setBlog] = useState([]);
+  const [bookMarkedUsers, setBookMarkedUser] = useState([]);
   const [tempororyBlog, setTemproryBlog] = useState([]);
   const [specificBlogs, setSpecificBlogs] = useState([]);
 
@@ -86,30 +87,39 @@ function Profile() {
   }, [query]);
 
   const getBookMarkedUsers = async () => {
-    try {
-      const users = await axios.get(
-        `http://localhost:4000/getAllBookMarkedUsers/${User?.user._id}`,
-        {
-          withCredentials: true,
-        }
-      );
+    if (!User?.user._id) {
+      return;
+    } else {
+      try {
+        const users = await axios.get(
+          `http://localhost:4000/getAllBookMarkedUsers/${User?.user._id}`,
+          {
+            withCredentials: true,
+          }
+        );
 
-      console.log(users.data.data);
-    } catch (error) {
-      console.log(error);
+        console.log(users.data.data);
+        setBookMarkedUser(users.data.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
-  const bookMarkClick = async (userId) => {
-    // try {
-    //   const data = await axios.post("http://localhost:4000/bookMark", {
-    //     authorId: userId,
-    //     userId: User?.user._id,
-    //   });
-    //   console.log(data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+  const bookmarkedblogspage = () => {
+    navigate(`/bookmarkedblogs/${User?.user._id}`);
+  };
+
+  const bookMarkClick = async (blogId) => {
+    try {
+      const data = await axios.post("http://localhost:4000/bookMark", {
+        blogId: blogId,
+        userId: User?.user._id,
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const unBookMarkClick = async () => {};
@@ -206,18 +216,31 @@ function Profile() {
                       </p>
                     </div>
                     <div>
-                      <button className="followBtn">Follow</button>
-                      <button className="unfollowBtn">Unfollow</button>
-                      <BsBookmarks
+                      {/* <button className="followBtn">Follow</button>
+                      <button className="unfollowBtn">Unfollow</button> */}
+                      {bookMarkedUsers?.map((user) => (
+                        <div>
+                          {user.blogId === blog._id ? (
+                            <BsBookmarksFill
+                              className="bookmark_filled_icon"
+                              onClick={unBookMarkClick}
+                            />
+                          ) : (
+                            <BsBookmarks
+                              className="bookmark_empty_icon"
+                              onClick={() => {
+                                bookMarkClick(blog._id);
+                              }}
+                            />
+                          )}
+                        </div>
+                      ))}{" "}
+                      {/* <BsBookmarks
                         className="bookmark_empty_icon"
                         onClick={() => {
                           bookMarkClick(blog._id);
                         }}
-                      />
-                      <BsBookmarksFill
-                        className="bookmark_filled_icon"
-                        onClick={unBookMarkClick}
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>
@@ -232,7 +255,10 @@ function Profile() {
           <div className="profile_icons">
             <SiBloglovin className="profile_page_icon" />
             <AiFillHome className="profile_page_icon" onClick={homeclick} />
-            <BsFillBookmarksFill className="profile_page_icon" />
+            <BsFillBookmarksFill
+              className="profile_page_icon"
+              onClick={bookmarkedblogspage}
+            />
             <GiNotebook
               className="profile_page_icon"
               onClick={writeblogclick}
