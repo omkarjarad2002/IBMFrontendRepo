@@ -13,7 +13,7 @@ function Home() {
         <h3>Think discuss and write.</h3>
         {/* <button className="startreadingbtn" onClick={google}> */}
         <button className="startreadingbtn">
-          <Link to={`/login`}>Start reading</Link>
+          <Link to={`/login`}>start writing</Link>
         </button>
       </div>
       <div className="homediv2"></div>

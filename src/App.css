@@ -24,9 +24,13 @@ nav{
 .shadowX{ 
   box-shadow: 0 2px 8px rgba(0,0,0,0.8); 
 } 
-label.logo{  
+.logo_blogger{  
   color: black;
   padding: 0 100px; 
+}
+.logo_spot{  
+  color: rgb(30, 143, 30); 
+  margin-left: -100px;
 }
 nav ul{ 
   float: inline-end;
@@ -318,6 +322,7 @@ nav ul li a:hover{
 .startreadingbtn a{
   text-decoration: none;
   color: #000;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .startreadingbtn a:hover{ 
   color: black;
@@ -1040,6 +1045,10 @@ max-height: 150px;
   margin: 2px;
   width: 165px;
 }
+.blog_type_div input{
+  margin: 2px;
+  width: 300px;
+}
 
 /* Detail description of blog*/
 .detail__description__outer__div{
@@ -1087,4 +1096,10 @@ max-height: 150px;
 .detail__description__outer__div .btn{
   position: fixed;
   border-radius: 0px 50px 50px 0px;
+}
+
+.blog_selection_box{
+  height: 40px;
+  min-width: 200px;
+  max-width: 200px;
 }

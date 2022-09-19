@@ -4,7 +4,6 @@ import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
-import SocialLogin from "./components/SocialLogin";
 import Login from "./components/Login";
 import React, { useEffect } from "react";
 import axios from "axios";
@@ -28,20 +27,20 @@ function App() {
   const userDispatch = useDispatch();
   const navigate = useNavigate();
 
-  const checkGoogleLoginSuccess = () => {
-    axios
-      .get("http://localhost:4000/login/success", {
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response);
-        userDispatch(addUser(response.user));
-      })
-      .then((resObject) => {
-        userDispatch(addUser(resObject.user));
-      })
-      .catch((error) => console.log(error));
-  };
+  // const checkGoogleLoginSuccess = () => {
+  //   axios
+  //     .get("http://localhost:4000/login/success", {
+  //       withCredentials: true,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //       userDispatch(addUser(response.user));
+  //     })
+  //     .then((resObject) => {
+  //       userDispatch(addUser(resObject.user));
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
   const userExist = async () => {
     try {
@@ -59,7 +58,7 @@ function App() {
 
   useEffect(() => {
     userExist();
-    checkGoogleLoginSuccess();
+    // checkGoogleLoginSuccess();
   }, []);
   return (
     <>
@@ -84,7 +83,6 @@ function App() {
               </>
             }
           />
-          <Route path="/googlelogin" element={<SocialLogin />} />
           <Route
             path="/login"
             element={

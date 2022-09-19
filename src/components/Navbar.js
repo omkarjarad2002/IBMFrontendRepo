@@ -79,8 +79,11 @@ function Navbar() {
   return (
     <div>
       <nav className="shadowX">
-        <label className="logo fs-1" style={{ fontFamily: "serif" }}>
-          Blog'S
+        <label className="logo_blogger fs-1" style={{ fontFamily: "serif" }}>
+          Bloggers
+        </label>
+        <label className="logo_spot fs-1" style={{ fontFamily: "serif" }}>
+          Spot
         </label>
         <div className="smallscreennav">
           <div className="line1"></div>

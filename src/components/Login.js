@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { addUser } from "../features/userSlice";
-import googleLogo from "../Images/google_logo.png";
+// import googleLogo from "../Images/google_logo.png";
 
 function Login() {
   const userDispatch = useDispatch();
@@ -97,10 +97,10 @@ function Login() {
                   Login
                 </Link>
               </button>
-              <p>or</p>
+              {/* <p>or</p>
               <div className="googleIconBox">
                 <img onClick={google} src={googleLogo}></img>
-              </div>
+              </div> */}
               <br></br>
               <hr></hr>
               <p className="forgot_pass">

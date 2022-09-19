@@ -42,6 +42,7 @@ function AddBlog() {
   const handleInputs = (e) => {
     name = e.target.name;
     value = e.target.value;
+    console.log(value);
 
     setData({ ...data, [name]: value });
   };
@@ -74,7 +75,9 @@ function AddBlog() {
         navigate(`/profile/${id}`);
       }
 
-      console.log(res);
+      alert(
+        `blog of name ${title} of category ${blogType} published successfully`
+      );
     } catch (error) {
       console.log(error);
     }
@@ -121,13 +124,14 @@ function AddBlog() {
             </div>
             <div className="blog_type_div 3 pt-2  text-align-center align-items-center">
               <label htmlFor="validationDefault01">Blog Type : </label>
+
               <input
                 type="text"
                 className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 autoComplete="off"
                 id="validationDefault01"
                 name="blogType"
-                placeholder="Enter Type of Blog..."
+                placeholder="sport/buisness/history/advanture"
                 onChange={handleInputs}
               />
             </div>

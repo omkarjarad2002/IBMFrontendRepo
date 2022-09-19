@@ -16,6 +16,8 @@ function Profile() {
 
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
+  const [isFetched, setIsFetched] = useState(false);
+  const [value, setValue] = useState("");
   const [blogId, setBlogId] = useState("");
   const [blogs, setBlog] = useState([]);
   const [bookMarkedUsers, setBookMarkedUser] = useState([]);
@@ -47,20 +49,14 @@ function Profile() {
   };
 
   const postSearch = () => {
-    if (!query) {
+    if (!value) {
       setBlog(tempororyBlog);
       return;
     }
-
     const filteredBlogs = blogs.filter((item) => {
       let blog = null;
-
-      if (
-        item.title.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query)
-      )
-        return (blog = item);
-
+      console.log(item.blogType);
+      if (item.blogType.toLowerCase().includes(value)) return (blog = item);
       return blog;
     });
     setBlog(filteredBlogs);
@@ -86,6 +82,10 @@ function Profile() {
     setBlog(filteredBlogs);
   }, [query]);
 
+  useEffect(() => {
+    getBookMarkedUsers();
+  }, [User]);
+
   const getBookMarkedUsers = async () => {
     if (!User?.user._id) {
       return;
@@ -97,8 +97,8 @@ function Profile() {
             withCredentials: true,
           }
         );
+        setIsFetched(true);
 
-        console.log(users.data.data);
         setBookMarkedUser(users.data.data);
       } catch (error) {
         console.log(error);
@@ -122,12 +122,29 @@ function Profile() {
     }
   };
 
+  // const findIsBookMarked = (blogId) => {
+  //   console.log(bookMarkedUsers.length);
+  //   bookMarkedUsers?.forEach((marked) => {
+  //     if (marked.blogId == blogId) {
+  //       return true;
+  //     }
+  //   });
+  //   return false;
+  // };
+
+  // useEffect(() => {
+  //   console.log(bookMarkedUsers);
+  // }, [bookMarkedUsers]);
+
   const unBookMarkClick = async () => {};
 
   useEffect(() => {
     getBlogs();
-    getBookMarkedUsers();
-  }, []);
+  }, [User]);
+
+  // if (bookMarkedUsers.length == 0) {
+  //   return <p>Fetching blogs...</p>;
+  // }
 
   return (
     <div className="profile">
@@ -151,7 +168,7 @@ function Profile() {
               name="sport"
               placeholder="sport"
               onClick={() => {
-                setQuery("sport");
+                setValue("sport");
                 postSearch();
               }}
             >
@@ -161,7 +178,7 @@ function Profile() {
               name="buisness"
               placeholder="buisness"
               onClick={() => {
-                setQuery("buisness");
+                setValue("buisness");
                 postSearch();
               }}
             >
@@ -171,17 +188,17 @@ function Profile() {
               name="story"
               placeholder="story"
               onClick={() => {
-                setQuery("story");
+                setValue("story");
                 postSearch();
               }}
             >
-              stroy
+              history
             </button>
             <button
               name="advanture"
               placeholder="advanture"
               onClick={() => {
-                setQuery("advanture");
+                setValue("advanture");
                 postSearch();
               }}
             >
@@ -191,63 +208,62 @@ function Profile() {
         </div>
 
         <div className="profilecontainer2">
-          {blogs?.map((blog) => (
-            <div>
-              <div className="card mb-3">
-                <div className="row g-0">
-                  <div className="col-md-4">
-                    <img
-                      src={`http://localhost:4000/uploads/${blog.file}`}
-                      className="img-fluid rounded-start"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <h5 className="card-title">{blog.title}</h5>
-                      <p className="card-text">
-                        {blog.description.slice(0, 100) + "..."}
-                        <Link
-                          className="more__button"
-                          to={`/detailDescription/${blog._id}`}
-                        >
-                          more
-                        </Link>
-                      </p>
+          {isFetched &&
+            blogs?.map((blog) => (
+              <div>
+                <div className="card mb-3">
+                  <div className="row g-0">
+                    <div className="col-md-4">
+                      <img
+                        src={`http://localhost:4000/uploads/${blog.file}`}
+                        className="img-fluid rounded-start"
+                        alt="..."
+                      />
                     </div>
-                    <div>
-                      {/* <button className="followBtn">Follow</button>
-                      <button className="unfollowBtn">Unfollow</button> */}
-                      {bookMarkedUsers?.map((user) => (
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h5 className="card-title">{blog.title}</h5>
+                        <p className="card-text">
+                          {blog.description.slice(0, 100) + "..."}
+                          <Link
+                            className="more__button"
+                            to={`/detailDescription/${blog._id}`}
+                          >
+                            more
+                          </Link>
+                        </p>
+                      </div>
+                      <div>
                         <div>
-                          {user.blogId === blog._id ? (
-                            <BsBookmarksFill
-                              className="bookmark_filled_icon"
-                              onClick={unBookMarkClick}
-                            />
-                          ) : (
-                            <BsBookmarks
-                              className="bookmark_empty_icon"
-                              onClick={() => {
-                                bookMarkClick(blog._id);
-                              }}
-                            />
+                          {bookMarkedUsers.map((booked) =>
+                            booked.blogId == blog._id ? (
+                              <BsBookmarksFill
+                                className="bookmark_filled_icon"
+                                onClick={unBookMarkClick}
+                              />
+                            ) : (
+                              <BsBookmarks
+                                className="bookmark_empty_icon"
+                                onClick={() => {
+                                  bookMarkClick(blog._id);
+                                }}
+                              />
+                            )
                           )}
                         </div>
-                      ))}{" "}
-                      {/* <BsBookmarks
-                        className="bookmark_empty_icon"
-                        onClick={() => {
-                          bookMarkClick(blog._id);
-                        }}
-                      /> */}
+                        {/* <BsBookmarks
+                          className="bookmark_empty_icon"
+                          onClick={() => {
+                            bookMarkClick(blog._id);
+                          }}
+                        /> */}
+                      </div>
                     </div>
                   </div>
                 </div>
+                <hr className="hr"></hr>
               </div>
-              <hr className="hr"></hr>
-            </div>
-          ))}
+            ))}
         </div>
 
         <hr></hr>
