@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
 import { BsFillBookmarksFill } from "react-icons/bs";
-import { GiNotebook } from "react-icons/gi";
+import { GiNotebook, GiWoodenClogs } from "react-icons/gi";
 import { BiCircle, BiLogOut } from "react-icons/bi";
-import { SiBloglovin } from "react-icons/si";
+import { SiBloglovin, SiMarketo } from "react-icons/si";
 import { BsBookmarks } from "react-icons/bs";
 import { BsBookmarksFill } from "react-icons/bs";
 import axios from "axios";
@@ -122,29 +122,13 @@ function Profile() {
     }
   };
 
-  // const findIsBookMarked = (blogId) => {
-  //   console.log(bookMarkedUsers.length);
-  //   bookMarkedUsers?.forEach((marked) => {
-  //     if (marked.blogId == blogId) {
-  //       return true;
-  //     }
-  //   });
-  //   return false;
-  // };
-
-  // useEffect(() => {
-  //   console.log(bookMarkedUsers);
-  // }, [bookMarkedUsers]);
-
-  const unBookMarkClick = async () => {};
+  const findIsBookMarked = (blogId) => {
+    return bookMarkedUsers?.find((marked) => marked.blogId === blogId);
+  };
 
   useEffect(() => {
     getBlogs();
   }, [User]);
-
-  // if (bookMarkedUsers.length == 0) {
-  //   return <p>Fetching blogs...</p>;
-  // }
 
   return (
     <div className="profile">
@@ -208,62 +192,56 @@ function Profile() {
         </div>
 
         <div className="profilecontainer2">
-          {isFetched &&
-            blogs?.map((blog) => (
-              <div>
-                <div className="card mb-3">
-                  <div className="row g-0">
-                    <div className="col-md-4">
-                      <img
-                        src={`http://localhost:4000/uploads/${blog.file}`}
-                        className="img-fluid rounded-start"
-                        alt="..."
-                      />
+          {blogs?.map((blog) => (
+            <div>
+              <div className="card mb-3">
+                <div className="row g-0">
+                  <div className="col-md-4">
+                    <img
+                      src={`http://localhost:4000/uploads/${blog.file}`}
+                      className="img-fluid rounded-start"
+                      alt="..."
+                    />
+                  </div>
+                  <div className="col-md-8">
+                    <div className="card-body">
+                      <h5 className="card-title">{blog.title}</h5>
+                      <p className="card-text">
+                        {blog.description.slice(0, 100) + "..."}
+                        <Link
+                          className="more__button"
+                          to={`/detailDescription/${blog._id}`}
+                        >
+                          more
+                        </Link>
+                      </p>
                     </div>
-                    <div className="col-md-8">
-                      <div className="card-body">
-                        <h5 className="card-title">{blog.title}</h5>
-                        <p className="card-text">
-                          {blog.description.slice(0, 100) + "..."}
-                          <Link
-                            className="more__button"
-                            to={`/detailDescription/${blog._id}`}
-                          >
-                            more
-                          </Link>
-                        </p>
-                      </div>
+                    <div>
                       <div>
-                        <div>
-                          {bookMarkedUsers.map((booked) =>
-                            booked.blogId == blog._id ? (
-                              <BsBookmarksFill
-                                className="bookmark_filled_icon"
-                                onClick={unBookMarkClick}
-                              />
-                            ) : (
-                              <BsBookmarks
-                                className="bookmark_empty_icon"
-                                onClick={() => {
-                                  bookMarkClick(blog._id);
-                                }}
-                              />
-                            )
-                          )}
-                        </div>
-                        {/* <BsBookmarks
+                        {isFetched && findIsBookMarked(blog._id) ? (
+                          <BsBookmarksFill className="bookmark_filled_icon" />
+                        ) : (
+                          <BsBookmarks
+                            className="bookmark_empty_icon"
+                            onClick={() => {
+                              bookMarkClick(blog._id);
+                            }}
+                          />
+                        )}
+                      </div>
+                      {/* <BsBookmarks
                           className="bookmark_empty_icon"
                           onClick={() => {
                             bookMarkClick(blog._id);
                           }}
                         /> */}
-                      </div>
                     </div>
                   </div>
                 </div>
-                <hr className="hr"></hr>
               </div>
-            ))}
+              <hr className="hr"></hr>
+            </div>
+          ))}
         </div>
 
         <hr></hr>
