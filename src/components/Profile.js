@@ -19,10 +19,10 @@ function Profile() {
   const [isFetched, setIsFetched] = useState(false);
   const [value, setValue] = useState("");
   const [blogId, setBlogId] = useState("");
-  const [blogs, setBlog] = useState([]);
   const [bookMarkedUsers, setBookMarkedUser] = useState([]);
-  const [tempororyBlog, setTemproryBlog] = useState([]);
   const [specificBlogs, setSpecificBlogs] = useState([]);
+  const [blogs, setBlog] = useState([]); //final
+  const [tempororyBlog, setTemproryBlog] = useState([]);
 
   const getBlogs = async () => {
     try {

@@ -94,10 +94,10 @@ function Login() {
                   style={{ textDecoration: "none", color: "white" }}
                   className="py-3"
                 >
-                  Login
+                  e Login
                 </Link>
               </button>
-              {/* <p>or</p>
+              {/* <p>or</p>p
               <div className="googleIconBox">
                 <img onClick={google} src={googleLogo}></img>
               </div> */}
